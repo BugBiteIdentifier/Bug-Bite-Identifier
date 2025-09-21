@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bug Bite Idenitifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='HomePage.css') }}">
+</head>
+<body>
+    <div class = "title-container">
+        <h1 class = "title">Bug Bite Idenitifier</h1>
+        <p class = "app-info">Upload a photo of your bug bite and get instant identification , treatment recommendations, and healing timeline information.</p>
+        <p class = "ai-info">AI Powered Analysis</p>
+    </div>
+
+    <div class = "upload-photo-container">
+        <h3 class = "step-1-text">Step 1. Upload Your Photo</h3>
+        <p class = "step-1-desc">Take a clear photo of the bug bite for accurate analysis</p>
+
+     <div class="upload-photo-box">
+        <h6 class = "title-of-upload-box">Upload Bug Bite Photo</h6>
+        <p class = "upload-photo-desc">Click anywhere to select an image</p>
+        <input type="file" name="file" accept="image/*" required>
+    </div>
+
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <button class = "submit-button" type="submit">Upload Photo</button>
+    </form>
+
+
+    </div>
+</body>
+</html>

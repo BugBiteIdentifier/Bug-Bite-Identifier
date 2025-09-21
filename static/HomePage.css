@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    background: #89cff0;
+}
+
+.title{
+    color: #f2f2f2;
+    font-weight: 900;
+}
+
+.app-info{
+    color: #f2f2f2;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.ai-info{
+    color: white;
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 40px;
+}
+
+.upload-photo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    background: #f0f8ff;
+}
+
+.step-1-text{
+    color: black;
+    font-weight: 600;
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.step-1-desc{
+    color: gray;
+    font: 600;
+    font-size: 15px;
+    margin-top: 10px;  
+}
+
+.upload-photo-box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 500px;
+    height: 300px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    cursor: pointer;
+}
+
+.title-of-upload-box{
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.upload-photo-desc{
+    color: gray;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.submit-button{
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #89cff0;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.submit-button:hover{
+    background: #007acc;
+}

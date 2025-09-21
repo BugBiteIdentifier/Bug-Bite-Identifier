@@ -9,5 +9,11 @@ conda env create -f env.yml
 
 conda activate my_env
 
+
+# Run app.py
+```python
+  python3 app.py
+```
+
 ### Run the Code
 python BugBiteIdentifier.py

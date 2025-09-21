@@ -4,25 +4,43 @@
     <title>Bug Bite Idenitifier</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='HomePage.css') }}">
 </head>
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('preview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+
+        // hide the text inside the box
+        document.querySelector('.title-of-upload-box').style.display = 'none';
+        document.querySelector('.upload-photo-desc').style.display = 'none';
+    }
+</script>
+
 <body>
     <div class = "title-container">
-        <h1 class = "title">Bug Bite Idenitifier</h1>
+        <h1 class = "title">Bug Bite Identifier</h1>
         <p class = "app-info">Upload a photo of your bug bite and get instant identification , treatment recommendations, and healing timeline information.</p>
-        <p class = "ai-info">AI Powered Analysis</p>
     </div>
 
     <div class = "upload-photo-container">
         <h3 class = "step-1-text">Step 1. Upload Your Photo</h3>
         <p class = "step-1-desc">Take a clear photo of the bug bite for accurate analysis</p>
 
-     <div class="upload-photo-box">
-        <h6 class = "title-of-upload-box">Upload Bug Bite Photo</h6>
-        <p class = "upload-photo-desc">Click anywhere to select an image</p>
-        <input type="file" name="file" accept="image/*" required>
+    <div class="upload-photo-box" onclick="document.getElementById('fileInput').click()">
+        <h6 class="title-of-upload-box">Upload Bug Bite Photo</h6>
+        <p class="upload-photo-desc">Click anywhere to select an image</p>
+        <input id="fileInput" type="file" name="file" accept="image/*" required style="display: none;" onchange="previewImage(event)">
+        <img id="preview" src="" alt="Image Preview"/>
     </div>
 
+
+
     <form action="/predict" method="post" enctype="multipart/form-data">
-        <button class = "submit-button" type="submit">Upload Photo</button>
+        <button class = "submit-button" type="submit">Submit for Review</button>
     </form>
 
 

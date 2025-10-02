@@ -1,3 +1,4 @@
 # Ignore the data directory where datasets like MNIST will be stored
 /data/
 venv/
+/__pycache__

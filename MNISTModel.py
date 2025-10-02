@@ -3,27 +3,34 @@ import torch.nn as nn
 import torch.optim as optim
 from torchvision import datasets, transforms #This import allows us to access datasets within the torchvision library
 from torch.utils.data import DataLoader
-import pandas as pd
-from BugBiteImages import CustomDataset
+import CustomDataset
+
+#The following model will use the MNIST dataset
+#The MNIST dataset consists of 70,000 grayscale images of handwritten digits from 0 to 9, each image being a fixed 28x28 pixel square
 
 # Define the neural network architecture
 class PracticeCNN(nn.Module):
 
     def __init__(self):
         super(PracticeCNN, self).__init__()
-        # Takes 1 input channel (grayscale), outputs 32 feature maps. Since we are using RGB images, channel is 3.
-        self.conv1 = nn.Conv2d(3, 32, kernel_size=3, padding=1)
+        # Takes 1 input channel (grayscale), outputs 32 feature maps. If we were using RGB images, the input channel would need to be 3.
+        # Applies 32 filters of size 3x3. Padding of 1 keeps the image size at 28x28
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1)
 
+        # Downsamples 28x28 -> 14x14. Not really neccessary for MNIST but helps our NN learn patterns at different scales
         self.pool = nn.MaxPool2d(2, 2)
 
         #Second convolutional layer takes the 32 feature maps from conv1 and applies 64 new filters
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
+        # After this and a second pooling layer(done in the forward pass), the image is now 7x7 in size
 
         # Flattened output from conv layers
-        # Input size is 64 * 16 * 64 because that's the shape of the feature map after conv + pooling. Outputs 128 features
-        self.fcLayer1 = nn.Linear(64 * 16 * 64, 128)
+        # This is a fully connected layer, also called a dense layer.
+        # Input size is 64 * 7 * 7 because that's the shape of the feature map after conv + pooling. Outputs 128 features
+        self.fcLayer1 = nn.Linear(64 * 7 * 7, 128)
 
-        self.outputLayer = nn.Linear(128, 8)
+        # This is our output layer (input: 128, output: 10, for 10 classes of MNIST)
+        self.outputLayer = nn.Linear(128, 10)
 
     def forward(self, x):
         # Apply first convolution + ReLU activation + pooling
@@ -36,7 +43,7 @@ class PracticeCNN(nn.Module):
 
         # Flatten the 3D output into a 1D vector so it can be passed to fully connected layers
         # `-1` lets PyTorch infer the batch size automatically
-        x = x.view(-1, 64 * 16 * 64)
+        x = x.view(-1, 64 * 7 * 7)
         x = torch.relu(self.fcLayer1(x))
         x = self.outputLayer(x)
         return x
@@ -44,23 +51,12 @@ class PracticeCNN(nn.Module):
 # Set device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Transformation
-transform = transforms.Compose([
-    transforms.Resize((64, 256)),  # Resize to desired input size
-    transforms.ToTensor(),         # Convert to tensor
-    transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))  # Normalize the image
-])
+# Define transformations. This normalizes the MNIST dataset. This line will need to change if a different dataset is used
+transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
 
-# Login using e.g. `huggingface-cli login` to access this dataset
-# Our dataset is in parquet format. Parquet stores data in a columnar format
-splits = {'train': 'data/train-00000-of-00001.parquet', 'validation': 'data/validation-00000-of-00001.parquet'}
-
-# Load the data from Hugging Face parquet files
-train_df = pd.read_parquet("hf://datasets/eceunal/bug-bite-images-aug_v3/" + splits["train"])
-test_df = pd.read_parquet("hf://datasets/eceunal/bug-bite-images-aug_v3/" + splits["validation"])
-
-train_dataset = CustomDataset(train_df, transform=transform)
-test_dataset = CustomDataset(test_df, transform=transform)
+# Download and load the MNIST dataset
+train_dataset = datasets.MNIST(root='./data', train=True, download=True, transform=transform)
+test_dataset = datasets.MNIST(root='./data', train=False, download=True, transform=transform)
 
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
@@ -71,7 +67,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
 # Training function
-def train(model, train_loader, criterion, optimizer, epochs):
+def train(model, train_loader, criterion, optimizer, epochs=5):
     model.train()
     for epoch in range(epochs):
         running_loss = 0.0
@@ -119,6 +115,6 @@ def test(model, test_loader):
     accuracy = (correct / total) * 100
     print(f'Test Accuracy: {accuracy:.2f}%')
 
-# Run the training and testing.
-train(model, train_loader, criterion, optimizer, epochs=20)
-test(model, test_loader)
+# Run the training and testing. Just 5 epochs for now, MNIST dataset is very easy, harder datasets will require more.
+train(model, train_loader, criterion, optimizer, epochs=5)# Epoch [5/5], Loss: 0.0238, Accuracy: 99.25% <-- This is our training accuracy
+test(model, test_loader)#<-- This is the test accuracy

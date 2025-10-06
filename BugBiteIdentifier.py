@@ -120,5 +120,8 @@ def test(model, test_loader):
     print(f'Test Accuracy: {accuracy:.2f}%')
 
 # Run the training and testing.
-train(model, train_loader, criterion, optimizer, epochs=20)
+train(model, train_loader, criterion, optimizer, epochs=15)
 test(model, test_loader)
+
+torch.save(model.state_dict(), "model/bugbite_cnn_model.pth")
+print("Model saved to model/bugbite_cnn_model.pth")

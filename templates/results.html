@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='HomePage.css') }}">
+</head>
+<body>
+    <div class="title-container">
+        <h1 class="title">Bug Bite Identifier</h1>
+        <p class="app-info">Upload a photo of your bug bite and get instant identification, treatment recommendations, and healing timeline information.</p>
+    </div>
+
+    <div class="result-container">
+        <h1>Prediction Result</h1>
+        <p class="prediction-text">The bug bite in your photo is predicted to be: <strong>{{ label }}</strong></p>
+        <a href="{{ url_for('home') }}"><button class="submit-button">Try Another Photo</button></a>
+    </div>
+</body>
+</html>

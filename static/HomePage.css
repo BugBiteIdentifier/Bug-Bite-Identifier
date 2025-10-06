@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     height: 30vh;
-    background: #89cff0;
+    background: #384e1d;
 }
 
 .title{
@@ -76,12 +76,11 @@
 }
 
 .submit-button{
-    margin-top: 20px;
     width: 120px;
     height: 40px;
     border: none;
     border-radius: 5px;
-    background: #89cff0;
+    background-color: #384e1d;
     color: white;
     font-weight: 600;
     cursor: pointer;
@@ -97,4 +96,10 @@
     max-height: 90%;
     margin-top: 10px;
     border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

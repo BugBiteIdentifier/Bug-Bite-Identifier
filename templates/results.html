@@ -14,6 +14,55 @@
         <h1>Prediction Result</h1>
         <p class="prediction-text">The bug bite in your photo is predicted to be: <strong>{{ label }}</strong></p>
         <a href="{{ url_for('home') }}"><button class="submit-button">Try Another Photo</button></a>
+
+        <!--CODE TO DETERMINE BUG INFO-->
+         <p id="bugInfo"></p>
+
+    <script>
+        let bugInfo = "";
+
+        // Use tojson so Flask adds proper quotes and escaping
+        //this says it has an error but it appears to work still??
+        const bugType = {{ label | tojson }};
+
+        switch (bugType)
+        {
+            case "ant":
+                bugInfo = "DISPLAY ANT INFO HERE";
+                break;
+            
+            case "bedbug":
+                bugInfo = "DISPLAY BEDBUG INFO HERE";
+                break;
+            
+            case "tick":
+                bugInfo = "DISPLAY TICK INFO HERE";
+                break;
+            
+            case "berry bug":
+                bugInfo = "DISPLAY BERRY BUG INFO HERE";
+                break;
+            
+            case "spider":
+                bugInfo = "DISPLAY SPIDER INFO HERE";
+                break;
+            
+            case "fleas":
+                bugInfo = "DISPLAY FLEAS INFO HERE";
+                break;
+
+            case "no bite": 
+                bugInfo = "DISPLAY NO BITE INFO HERE";
+                break;
+            
+            case "mosquito": 
+                bugInfo = "DISPLAY MOSQUITO INFO HERE";
+                break;
+        }
+
+        document.getElementById("bugInfo").textContent = bugInfo;
+    </script>
+
     </div>
 </body>
 </html>

@@ -2,13 +2,18 @@ from flask import Flask, request, render_template, jsonify
 from PIL import Image
 import torch
 from torchvision import transforms
-from modelStructure import PracticeCNN 
+from modelStructure import ResNet18#, PracticeCNN 
 
 app = Flask(__name__)
 
 # Load trained model (only)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = PracticeCNN().to(device)
+model = ResNet18(num_classes=8).to(device)
+
+#num_classes had to be specified because in the previous CNN the last layer was hardcoded to 8 outputs
+#self.outputLayer = nn.Linear(128, 8), while with the ResNet model the final layer is configurable with
+#a parameter
+
 model.load_state_dict(torch.load("model/bugbite_cnn_model.pth", map_location=device))
 model.eval()
 

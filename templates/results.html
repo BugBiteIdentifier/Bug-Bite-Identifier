@@ -2,19 +2,59 @@
 <html>
 <head>
     <title>Prediction Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='HomePage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
 </head>
 <body>
     <div class="title-container">
         <h1 class="title">Bug Bite Identifier</h1>
-        <p class="app-info">Upload a photo of your bug bite and get instant identification, treatment recommendations, and healing timeline information.</p>
     </div>
 
     <div class="result-container">
-        <h1>Prediction Result</h1>
-        <p class="prediction-text">The bug bite in your photo is predicted to be: <strong>{{ label }}</strong></p>
-        <a href="{{ url_for('home') }}"><button class="submit-button">Try Another Photo</button></a>
+        <h1>Your Bug Bite Analysis</h1>
+        <p class="result-subtitle">Based on the uploaded image</p>
+        <a href="{{ url_for('home') }}"><button class="submit-button">New Analysis</button></a>
 
+        <div class="analysis"> 
+            <h1>Analysis Results</h1>
+            <div class="analysis-items">
+                <p class="prediction-text">Identified as <br> <strong>{{ label }} Bite</strong></p>
+                <p class="duration-text">Expected Duration<br><strong>placeholder</strong></p>
+                <p class="severity-text">Severity<br><strong>placeholder</strong></p>
+            </div>
+
+        </div>
+
+        <div class="treatment">
+            <h1>Treatment Recommendations</h1>
+            <ul class="treatmentlist">
+                <li id="treat1">Example treatment #1</li>
+                <li id="treat2">Example treatment #2</li>
+                <li id="treat3">Example treatment #3</li>
+                <li id="treat4">Example treatment #4</li>
+                <li id="treat5">Example treatment #5</li>
+            </ul>
+        </div>
+
+        <div class="symptoms">
+            <h1>Common Symptoms</h1>
+            <ul class="symptomlist">
+                <li id="sym1">Example symptom #1</li>
+                <li id="sym2">Example symptom #2</li>
+                <li id="sym3">Example symptom #3</li>
+                <li id="sym4">Example symptom #4</li>
+                <li id="sym5">Example symptom #5</li>
+        </div>
+
+        <div class="medical-help">
+            <h1>When to Seek Medical Help</h1>
+            <ul class="medicallist">
+                <li id="help1">Example warning #1</li>
+                <li id="help2">Example warning #2</li>
+                <li id="help3">Example warning #3</li>
+                <li id="help4">Example warning #4</li>
+                <li id="help5">Example warning #5</li>
+        </div>
+        
         <!--CODE TO DETERMINE BUG INFO-->
          <p id="bugInfo"></p>
 
@@ -27,35 +67,35 @@
 
         switch (bugType)
         {
-            case "ant":
+            case "Ant":
                 bugInfo = "DISPLAY ANT INFO HERE";
                 break;
             
-            case "bedbug":
+            case "Bedbug":
                 bugInfo = "DISPLAY BEDBUG INFO HERE";
                 break;
             
-            case "tick":
+            case "Tick":
                 bugInfo = "DISPLAY TICK INFO HERE";
                 break;
             
-            case "berry bug":
+            case "Berry Bug":
                 bugInfo = "DISPLAY BERRY BUG INFO HERE";
                 break;
             
-            case "spider":
+            case "Spider":
                 bugInfo = "DISPLAY SPIDER INFO HERE";
                 break;
             
-            case "fleas":
+            case "Fleas":
                 bugInfo = "DISPLAY FLEAS INFO HERE";
                 break;
 
-            case "no bite": 
+            case "No": 
                 bugInfo = "DISPLAY NO BITE INFO HERE";
                 break;
             
-            case "mosquito": 
+            case "Mosquito": 
                 bugInfo = "DISPLAY MOSQUITO INFO HERE";
                 break;
         }

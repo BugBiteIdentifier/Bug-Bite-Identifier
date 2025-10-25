@@ -19,7 +19,7 @@ transform = transforms.Compose([
     transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
 ])
 
-labels = ["ant", "bedbug", "tick", "berry bug", "spider", "fleas", "no bite ", "mosquito"]
+labels = ["Ant", "Bedbug", "Tick", "Berry Bug", "Spider", "Fleas", "No", "Mosquito"]
 
 @app.route("/")
 def home():

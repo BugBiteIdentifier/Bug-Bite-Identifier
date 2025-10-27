@@ -19,22 +19,22 @@
 }
 
 .result-container{
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 15px;
     margin-left: 350px;
     margin-right: 350px;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    
     font-family: sans-serif;
+    max-height: calc(100vh - 100px);
 }
 
 .result-subtitle{
     margin-top: 5px;
-    color: #323232;
+    color: #f2f2f2;
 }
 
 .analysis{
-    margin-top: 60px;
+    margin-top: 0px;
     padding: 15px;
     outline: 3px solid #4b6827;
     outline-offset: 0px;
@@ -98,7 +98,6 @@
 
 .medical-help {
     margin-top: 20px;
-    margin-bottom: 20px;
     padding: 15px;
     outline: 3px solid #f03d3d;
     outline-offset: 0px;
@@ -111,8 +110,4 @@
     margin-top: 10px;
     margin-left: 0px;
     padding-left: 20px;
-}
-
-#bugInfo {
-
 }

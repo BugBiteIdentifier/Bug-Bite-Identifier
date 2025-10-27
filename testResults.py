@@ -1,5 +1,6 @@
 # This file is for testing different the results page with different bug type inputs quickly
 # Each time you want to change bug input you must refresh page, which will then send another prompt in the terminal
+# Case sensitive
 from flask import Flask, render_template
 import time
 

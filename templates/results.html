@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+</head>
+
+<body>
+    <div class="title-container">
+        <h1 class="title">Your Bug Bite Analysis</h1>
+        <p class="result-subtitle">Based on the uploaded image</p>
+    </div>
+
+    <div class="result-container">
+        <a href="{{ url_for('home') }}"><button class="submit-button">New Analysis</button></a>
+
+        <div class="analysis">
+            <h1>Analysis Results</h1>
+            <div class="analysis-items">
+                <p class="prediction-text">Identified as <br> <strong>{{ label }} Bite</strong></p>
+                <p class="duration-text" id="dtext">Expected Duration<br><strong>placeholder</strong></p>
+                <p class="severity-text" id="stext">Severity<br><strong>placeholder</strong></p>
+            </div>
+
+        </div>
+        <div id="isBite">
+            <div class="treatment">
+                <h1>Treatment Recommendations</h1>
+                <ul class="treatmentlist">
+                    <li id="treat1">Example treatment #1</li>
+                    <li id="treat2">Example treatment #2</li>
+                    <li id="treat3">Example treatment #3</li>
+                    <li id="treat4">Example treatment #4</li>
+                    <li id="treat5">Example treatment #5</li>
+                </ul>
+            </div>
+
+            <div class="symptoms">
+                <h1>Common Symptoms</h1>
+                <ul class="symptomlist">
+                    <li id="sym1">Example symptom #1</li>
+                    <li id="sym2">Example symptom #2</li>
+                    <li id="sym3">Example symptom #3</li>
+                    <li id="sym4">Example symptom #4</li>
+                    <li id="sym5">Example symptom #5</li>
+            </div>
+
+            <div class="medical-help">
+                <h1>When to Seek Medical Help</h1>
+                <ul class="medicallist">
+                    <li id="help1">Example warning #1</li>
+                    <li id="help2">Example warning #2</li>
+                    <li id="help3">Example warning #3</li>
+                    <li id="help4">Example warning #4</li>
+                    <li id="help5">Example warning #5</li>
+            </div>
+        </div>
+
+        <!--this line right here is testing that we can get the result and pass text from it correctly-->
+        <p id="bugInfo"></p>
+
+        <!--CODE TO DETERMINE BUG INFO-->
+        <script>
+            let bugInfo = "";
+
+            //Use tojson so Flask adds proper quotes and escaping
+            //this says it has an error but it appears to work still??
+            const bugType = {{ label | tojson }};
+
+            switch (bugType) {
+                case "Ant":
+                    //setting bug info like this was just for my testing purposes, the text itself is now commented out under the switch
+                    bugInfo = "DISPLAY ANT INFO HERE";
+                    break;
+
+                case "Bedbug":
+                    bugInfo = "DISPLAY BEDBUG INFO HERE";
+                    break;
+
+                case "Tick":
+                    bugInfo = "DISPLAY TICK INFO HERE";
+                    break;
+
+                case "Berry Bug":
+                    bugInfo = "DISPLAY BERRY BUG INFO HERE";
+                    break;
+
+                case "Spider":
+                    bugInfo = "DISPLAY SPIDER INFO HERE";
+                    break;
+
+                case "Fleas":
+                    bugInfo = "DISPLAY FLEAS INFO HERE";
+                    break;
+
+                case "No":
+                    bugInfo = "DISPLAY NO BITE INFO HERE";
+                    //getting rid of treatments and other info since there is no bite
+                    document.getElementById("isBite").replaceChildren();
+                    //all other cases should use similar syntax as bellow to add their relevant data
+                    document.getElementById("dtext").textContent = "";
+                    document.getElementById("stext").textContent = "";
+                    //maybe display some sort of image here since page looks so empty now
+
+                    break;
+
+                case "Mosquito":
+                    bugInfo = "DISPLAY MOSQUITO INFO HERE";
+                    break;
+            }
+            //document.getElementById("bugInfo").textContent = bugInfo;
+        </script>
+
+        <!--This image is only displayed for No Bite, to fill the screen-->
+        <img src="name" alt="sillyBug" height="500" width="500">
+        
+    </div>
+</body>
+
+</html>

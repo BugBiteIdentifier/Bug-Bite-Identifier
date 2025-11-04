@@ -1,3 +1,5 @@
+flask
+gunicorn
 numpy
 pandas
 matplotlib
@@ -5,6 +7,5 @@ scikit-learn
 torch
 torchvision
 torchaudio
-jupyter
 tqdm
 tensorboard

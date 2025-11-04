@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background: #384e1d;
+}
+
+.title{
+    color: #f2f2f2;
+    font-weight: 900;
+}
+
+.result-container{
+    margin-top: 15px;
+    margin-left: 350px;
+    margin-right: 350px;
+    align-items: center;
+    justify-content: center;    
+    font-family: sans-serif;
+    max-height: calc(100vh - 100px);
+}
+
+.result-subtitle{
+    margin-top: 5px;
+    color: #f2f2f2;
+}
+
+.analysis{
+    margin-top: 0px;
+    padding: 15px;
+    outline: 3px solid #4b6827;
+    outline-offset: 0px;
+    border-radius: 10px;
+    background: #f0f8ff;
+    background: linear-gradient(to bottom, #f0fff2 0%, #a8b2aa 100%);
+}
+
+.submit-button{
+    align-self: right;
+    background-color:#4b6827;
+    color: #FFFFFF;
+    outline-offset: 0px;
+    border-radius: 10px;
+    width:100px;
+    height:50px;
+    float: right;
+}
+
+.analysis-items {
+    margin-top: 10px;
+    margin-bottom:10px;
+    display: flex;
+    justify-content: space-between; /* pushes items to opposite sides */
+    align-items: center;
+}
+
+.prediction-text {
+    text-align: left;
+}
+
+.treatment {
+    margin-top: 20px;
+    padding: 15px;
+    outline: 3px solid #4b6827;
+    outline-offset: 0px;
+    border-radius: 10px;
+    background: #f0fff2;
+}
+
+.treatmentlist {
+    margin-top: 10px;
+    margin-left: 0px;
+    padding-left: 20px;
+}
+
+.symptoms {
+    margin-top: 20px;
+    padding: 15px;
+    outline: 3px solid #4b6827;
+    outline-offset: 0px;
+    border-radius: 10px;
+    background: #f0fff2;
+}
+
+.symptomlist {
+    margin-top: 10px;
+    margin-left: 0px;
+    padding-left: 20px;
+}
+
+.medical-help {
+    margin-top: 20px;
+    padding: 15px;
+    outline: 3px solid #f03d3d;
+    outline-offset: 0px;
+    border-radius: 10px;
+    background: #f5b6c8;
+    color:#f03d3d;
+}
+
+.medicallist {
+    margin-top: 10px;
+    margin-left: 0px;
+    padding-left: 20px;
+}

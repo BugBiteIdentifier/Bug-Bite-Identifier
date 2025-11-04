@@ -44,6 +44,7 @@
                     <li id="sym3">Example symptom #3</li>
                     <li id="sym4">Example symptom #4</li>
                     <li id="sym5">Example symptom #5</li>
+                    <li id="sym6">Example symptom #5</li>
             </div>
 
             <div class="medical-help">
@@ -72,6 +73,30 @@
                 case "Ant":
                     //setting bug info like this was just for my testing purposes, the text itself is now commented out under the switch
                     bugInfo = "DISPLAY ANT INFO HERE";
+
+                    document.getElementById("dtext").textContent = "Expected Duration: 2-3 days or 3-7 days if fire ant";
+                    document.getElementById("stext").textContent = "Severity: Low";
+
+                    document.getElementById("treat1").textContent = "Apply ice to reduce swelling";
+                    document.getElementById("treat2").textContent = "Take antihisamines or apply a topical cream to reduce itching";
+                    document.getElementById("treat3").textContent = "Take acetaminophine to alleviate pain";
+                    document.getElementById("treat4").textContent = "Take corticosteroids for swelling";
+                    document.getElementById("treat5").textContent = "Receive an epinephrine injection if you are having an allergic reaction";
+                    
+
+                    document.getElementById("sym1").textContent = "Hives and swelling";
+                    document.getElementById("sym2").textContent = "Itchiness";
+                    document.getElementById("sym3").textContent = "Abdominal Pain";
+                    document.getElementById("sym4").textContent = "Tightness in chest and/or difficulty breathing";
+                    document.getElementById("sym5").textContent = "Nausea or vomiting";
+                    document.getElementById("sym6").textContent = "Dizziness";
+
+                    document.getElementById("help1").textContent = "When you have symptoms of an allergic reaction";
+                    document.getElementById("help2").textContent = "If you experience swelling or hives forming around your body";
+                    document.getElementById("help3").textContent = "If you experience vomiting";
+                    document.getElementById("help4").textContent = "If you experience abdominal pain";
+                    document.getElementById("help5").textContent = "If you experience severe itching";
+
                     break;
 
                 case "Bedbug":

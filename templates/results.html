@@ -102,7 +102,7 @@
                 case "Bedbug":
                     bugInfo = "DISPLAY BEDBUG INFO HERE";
 
-                    document.getElementById("dtext").textContent = "Expected Duration: 1 to 2 weeks, depending on skin sensitivity and number of bites";
+                    document.getElementById("dtext").textContent = "Expected Duration: 1 to 2 weeks";
                     document.getElementById("stext").textContent = "Severity: Low to Moderate";
 
                     document.getElementById("treat1").textContent = "Wash affected area with soap and water to reduce risk of infection";
@@ -129,8 +129,30 @@
 
                 case "Tick":
                     bugInfo = "DISPLAY TICK INFO HERE";
-                    break;
 
+                    document.getElementById("dtext").textContent = "Expected Duration: 3 to 14 days; longer if disease develops";
+                    document.getElementById("stext").textContent = "Severity: Moderate (potentially severe if disease transmitted)";
+
+                    document.getElementById("treat1").textContent = "Remove the tick carefully using tweezers, pulling straight out without twisting";
+                    document.getElementById("treat2").textContent = "Clean the bite area thoroughly with soap and water or rubbing alcohol";
+                    document.getElementById("treat3").textContent = "Apply an antibiotic ointment to reduce risk of infection";
+                    document.getElementById("treat4").textContent = "Monitor the bite site for redness, swelling, or rash over the next 2 weeks";
+                    document.getElementById("treat5").textContent = "Consult a doctor if symptoms of tick-borne illness develop";
+
+                    document.getElementById("sym1").textContent = "Small red bump or irritation at bite site";
+                    document.getElementById("sym2").textContent = "Itchiness or mild pain around the area";
+                    document.getElementById("sym3").textContent = "Possible circular rash";
+                    document.getElementById("sym4").textContent = "Fever, chills, or fatigue (possible infection)";
+                    document.getElementById("sym5").textContent = "Muscle or joint aches";
+                    document.getElementById("sym6").textContent = "Swollen lymph nodes near the bite";
+
+                    document.getElementById("help1").textContent = "If you develop a circular rash or red expanding ring around the bite";
+                    document.getElementById("help2").textContent = "If you experience fever, chills, or body aches after a tick bite";
+                    document.getElementById("help3").textContent = "If part of the tick remains embedded in your skin after removal";
+                    document.getElementById("help4").textContent = "If the bite site becomes infected, red, or draining pus";
+                    document.getElementById("help5").textContent = "If you experience neurological symptoms such as facial paralysis or severe headaches";
+
+                    break;                
                 case "Berry Bug":
                     bugInfo = "DISPLAY BERRY BUG INFO HERE";
                     break;
@@ -162,7 +184,7 @@
         </script>
 
         <!--This image is only displayed for No Bite, to fill the screen-->
-        <img src="name" alt="sillyBug" height="500" width="500">
+        <!-- <img src="name" alt="sillyBug" height="500" width="500"> -->
         
     </div>
 </body>

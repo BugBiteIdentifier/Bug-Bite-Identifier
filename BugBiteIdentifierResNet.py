@@ -25,9 +25,9 @@ print("Using device:", device)
 
 # Transformation
 transform = transforms.Compose([
-    transforms.Resize((64, 256)),  # Resize to input size
+    transforms.Resize((224, 224)),  # Resize to input size
     transforms.ToTensor(),         # Convert to tensor
-    transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))  # Normalize the image
+    transforms.Normalize(mean=(0.6701, 0.5235, 0.4636), std=(0.2392, 0.2142, 0.2095))  # Normalize the image
 ])
 
 # Login using e.g. `huggingface-cli login` to access this dataset
@@ -50,6 +50,7 @@ class ResNet18(nn.Module):
         self.model = models.resnet18(weights=None)
         self.model.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
         self.model.maxpool = nn.Identity()
+        self.dropout = nn.Dropout(0.5)
         self.model.fc = nn.Linear(self.model.fc.in_features, num_classes)
 
     def forward(self, x):
@@ -67,7 +68,7 @@ def train(model, loader, criterion, optimizer):
     all_labels = []
     all_preds = []
 
-    for images, labels in loader:
+    for i, (images, labels) in enumerate(loader, 1):  # start counting from 1
         images, labels = images.to(device), labels.to(device)
 
         outputs = model(images)
@@ -78,6 +79,12 @@ def train(model, loader, criterion, optimizer):
         optimizer.step()
 
         running_loss += loss.item() * images.size(0)
+
+        # Print every 10 batches
+        if i % 10 == 0:
+            print(f"Epoch [{epoch}/{num_epochs}], Batch [{i}/{len(loader)}], Loss: {running_loss/10:.4f}")
+            running_loss = 0.0
+
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
@@ -124,7 +131,7 @@ def evaluate(model, loader, criterion):
     return epoch_loss, epoch_acc, epoch_precision, epoch_recall, epoch_f1
 
 
-num_epochs = 20
+num_epochs = 50
 for epoch in range(1, num_epochs + 1):
     train_loss, train_acc, train_precision, train_recall, train_f1 = train(resnet_model, train_loader, criterion, optimizer)
     test_loss, test_acc, test_precision, test_recall, test_f1 = evaluate(resnet_model, test_loader, criterion)

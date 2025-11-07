@@ -12,7 +12,7 @@ conda activate my_env
 
 # Run app.py
 ```python
-  python3 app.py
+  python app.py
 ```
 
 ### Run the Code

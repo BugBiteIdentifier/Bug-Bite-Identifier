@@ -27,9 +27,10 @@ print("Using device:", device)
 # Data augmentation for training data
 train_transform = transforms.Compose([
     transforms.Resize((224, 224)),
+    transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(degrees=10),
-    transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.1, hue=0.05),
-    transforms.RandomResizedCrop(size=224, scale=(0.9, 1.0), ratio=(0.9, 1.1)), #Crops image a bit for zoom variations, also tweaks aspect ratio of images
+    transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.2, hue=0.1),
+    transforms.GaussianBlur(kernel_size=3, sigma=(0.1, 2.0)), # Meant to mimic lower quality phone images
     transforms.ToTensor(),
     transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
 ])

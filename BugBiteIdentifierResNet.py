@@ -27,10 +27,11 @@ print("Using device:", device)
 # Data augmentation for training data
 train_transform = transforms.Compose([
     transforms.Resize((224, 224)),
-    transforms.RandomHorizontalFlip(),
+    #transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(degrees=10),
-    transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.2, hue=0.1),
-    transforms.GaussianBlur(kernel_size=3, sigma=(0.1, 2.0)), # Meant to mimic lower quality phone images
+    transforms.RandomApply([transforms.ColorJitter(0.4, 0.4, 0.2, 0.1)], p=0.5),
+    transforms.RandomApply([transforms.GaussianBlur(3, sigma=(0.1, 2.0))], p=0.5), # Meant to mimic lower quality phone images
+    #transforms.RandomAffine(degrees=15, translate=(0.05, 0.05), scale=(0.9, 1.1), shear=5),
     transforms.ToTensor(),
     transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
 ])
@@ -70,7 +71,7 @@ class ResNet18(nn.Module):
 
 resnet_model = ResNet18().to(device)
 criterion = nn.CrossEntropyLoss().to(device)
-optimizer = optim.Adam(resnet_model.parameters(), lr=0.001)
+optimizer = optim.AdamW(resnet_model.parameters(), lr=0.001, weight_decay=1e-6)
 
 def train(model, loader, criterion, optimizer):
     model.train()
@@ -143,7 +144,7 @@ def evaluate(model, loader, criterion):
     return epoch_loss, epoch_acc, epoch_precision, epoch_recall, epoch_f1
 
 
-num_epochs = 25
+num_epochs = 15
 for epoch in range(1, num_epochs + 1):
     train_loss, train_acc, train_precision, train_recall, train_f1 = train(resnet_model, train_loader, criterion, optimizer)
     test_loss, test_acc, test_precision, test_recall, test_f1 = evaluate(resnet_model, test_loader, criterion)

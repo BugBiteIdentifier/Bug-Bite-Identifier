@@ -44,6 +44,7 @@
                     <li id="sym3">Example symptom #3</li>
                     <li id="sym4">Example symptom #4</li>
                     <li id="sym5">Example symptom #5</li>
+                    <li id="sym6">Example symptom #5</li>
             </div>
 
             <div class="medical-help">
@@ -78,31 +79,170 @@
                     bugInfo = "DISPLAY ANT INFO HERE";
                     //must specifiy image is not displayed for all other cases
                     img.style.display = "none";
+
+                    document.getElementById("dtext").textContent = "Expected Duration: 2-3 days or 3-7 days if fire ant";
+                    document.getElementById("stext").textContent = "Severity: Low";
+
+                    document.getElementById("treat1").textContent = "Apply ice to reduce swelling";
+                    document.getElementById("treat2").textContent = "Take antihisamines or apply a topical cream to reduce itching";
+                    document.getElementById("treat3").textContent = "Take acetaminophine to alleviate pain";
+                    document.getElementById("treat4").textContent = "Take corticosteroids for swelling";
+                    document.getElementById("treat5").textContent = "Receive an epinephrine injection if you are having an allergic reaction";
+                    
+
+                    document.getElementById("sym1").textContent = "Hives and swelling";
+                    document.getElementById("sym2").textContent = "Itchiness";
+                    document.getElementById("sym3").textContent = "Abdominal Pain";
+                    document.getElementById("sym4").textContent = "Tightness in chest and/or difficulty breathing";
+                    document.getElementById("sym5").textContent = "Nausea or vomiting";
+                    document.getElementById("sym6").textContent = "Dizziness";
+
+                    document.getElementById("help1").textContent = "When you have symptoms of an allergic reaction";
+                    document.getElementById("help2").textContent = "If you experience swelling or hives forming around your body";
+                    document.getElementById("help3").textContent = "If you experience vomiting";
+                    document.getElementById("help4").textContent = "If you experience abdominal pain";
+                    document.getElementById("help5").textContent = "If you experience severe itching";
+
                     break;
 
                 case "Bedbug":
                     bugInfo = "DISPLAY BEDBUG INFO HERE";
                     img.style.display = "none";
+
+                    document.getElementById("dtext").textContent = "Expected Duration: 1 to 2 weeks";
+                    document.getElementById("stext").textContent = "Severity: Low to Moderate";
+
+                    document.getElementById("treat1").textContent = "Wash affected area with soap and water to reduce risk of infection";
+                    document.getElementById("treat2").textContent = "Apply topical corticosteroid cream to reduce inflammation and itching";
+                    document.getElementById("treat3").textContent = "Take oral antihistamines to relieve itching";
+                    document.getElementById("treat4").textContent = "Use a cold compress to reduce swelling and discomfort";
+                    document.getElementById("treat5").textContent = "Avoid scratching to prevent skin infection";
+
+                    document.getElementById("sym1").textContent = "Red, itchy welts often arranged in a line or cluster";
+                    document.getElementById("sym2").textContent = "Localized swelling or mild inflammation";
+                    document.getElementById("sym3").textContent = "Burning or stinging sensation at bite sites";
+                    document.getElementById("sym4").textContent = "Possible secondary skin infection from scratching";
+                    document.getElementById("sym5").textContent = "Insomnia or anxiety from repeated bites";
+                    document.getElementById("sym6").textContent = "Allergic reaction (rare)";
+
+                    document.getElementById("help1").textContent = "If severe allergic reactions occur (e.g., difficulty breathing, swelling of face or throat)";
+                    document.getElementById("help2").textContent = "If bite sites become increasingly red, swollen, or filled with pus (possible infection)";
+                    document.getElementById("help3").textContent = "If symptoms persist beyond 2 weeks despite treatment";
+                    document.getElementById("help4").textContent = "If multiple household members are developing similar bites (possible infestation)";
+                    document.getElementById("help5").textContent = "If you develop fever or chills after being bitten";
+
                     break;
+
 
                 case "Tick":
                     bugInfo = "DISPLAY TICK INFO HERE";
                     img.style.display = "none";
-                    break;
 
+                    document.getElementById("dtext").textContent = "Expected Duration: 3 to 14 days; longer if disease develops";
+                    document.getElementById("stext").textContent = "Severity: Moderate (potentially severe if disease transmitted)";
+
+                    document.getElementById("treat1").textContent = "Remove the tick carefully using tweezers, pulling straight out without twisting";
+                    document.getElementById("treat2").textContent = "Clean the bite area thoroughly with soap and water or rubbing alcohol";
+                    document.getElementById("treat3").textContent = "Apply an antibiotic ointment to reduce risk of infection";
+                    document.getElementById("treat4").textContent = "Monitor the bite site for redness, swelling, or rash over the next 2 weeks";
+                    document.getElementById("treat5").textContent = "Consult a doctor if symptoms of tick-borne illness develop";
+
+                    document.getElementById("sym1").textContent = "Small red bump or irritation at bite site";
+                    document.getElementById("sym2").textContent = "Itchiness or mild pain around the area";
+                    document.getElementById("sym3").textContent = "Possible circular rash";
+                    document.getElementById("sym4").textContent = "Fever, chills, or fatigue (possible infection)";
+                    document.getElementById("sym5").textContent = "Muscle or joint aches";
+                    document.getElementById("sym6").textContent = "Swollen lymph nodes near the bite";
+
+                    document.getElementById("help1").textContent = "If you develop a circular rash or red expanding ring around the bite";
+                    document.getElementById("help2").textContent = "If you experience fever, chills, or body aches after a tick bite";
+                    document.getElementById("help3").textContent = "If part of the tick remains embedded in your skin after removal";
+                    document.getElementById("help4").textContent = "If the bite site becomes infected, red, or draining pus";
+                    document.getElementById("help5").textContent = "If you experience neurological symptoms such as facial paralysis or severe headaches";
+
+                    break;                
                 case "Berry Bug":
                     bugInfo = "DISPLAY BERRY BUG INFO HERE";
                     img.style.display = "none";
+
+                    document.getElementById("dtext").textContent = "Expected Duration: 1 to 5 days";
+                    document.getElementById("stext").textContent = "Severity: Mild";
+
+                    document.getElementById("treat1").textContent = "Clean the affected area with mild soap and water to prevent infection";
+                    document.getElementById("treat2").textContent = "Apply a cool compress or ice pack to reduce redness and itching";
+                    document.getElementById("treat3").textContent = "Use over-the-counter hydrocortisone cream or calamine lotion to relieve irritation";
+                    document.getElementById("treat4").textContent = "Take oral antihistamines if itching becomes bothersome";
+                    document.getElementById("treat5").textContent = "Avoid scratching to reduce risk of infection and scarring";
+
+                    document.getElementById("sym1").textContent = "Small red bumps or rash resembling mosquito bites";
+                    document.getElementById("sym2").textContent = "Mild itching or irritation at the site";
+                    document.getElementById("sym3").textContent = "Slight swelling or warmth around the bite area";
+                    document.getElementById("sym4").textContent = "Occasional scabbing if scratched repeatedly";
+                    document.getElementById("sym5").textContent = "No significant pain or systemic symptoms";
+                    document.getElementById("sym6").textContent = "Possible redness that fades within a few days";
+
+                    document.getElementById("help1").textContent = "If redness or swelling increases significantly over 24–48 hours";
+                    document.getElementById("help2").textContent = "If you develop signs of infection such as pus or severe pain";
+                    document.getElementById("help3").textContent = "If the rash spreads or does not improve after 5 days";
+                    document.getElementById("help4").textContent = "If you experience fever or fatigue after the bite";
+                    document.getElementById("help5").textContent = "If you suspect an allergic reaction (trouble breathing, dizziness)";
+
                     break;
 
                 case "Spider":
                     bugInfo = "DISPLAY SPIDER INFO HERE";
                     img.style.display = "none";
+
+                    document.getElementById("dtext").textContent = "Expected Duration: 3 to 10 days (longer if complications)";
+                    document.getElementById("stext").textContent = "Severity: Low to Moderate (can be severe for certain species)";
+
+                    document.getElementById("treat1").textContent = "Wash the bite with soap and water to reduce infection risk";
+                    document.getElementById("treat2").textContent = "Apply a cold compress 10–15 minutes at a time to reduce pain and swelling";
+                    document.getElementById("treat3").textContent = "Elevate the affected limb and rest";
+                    document.getElementById("treat4").textContent = "Use oral antihistamines or topical hydrocortisone for itching";
+                    document.getElementById("treat5").textContent = "Take OTC pain relievers (e.g., ibuprofen or acetaminophen) as needed";
+
+                    document.getElementById("sym1").textContent = "Redness and localized swelling at the bite";
+                    document.getElementById("sym2").textContent = "Mild to moderate pain or tenderness";
+                    document.getElementById("sym3").textContent = "Itching or warmth around the site";
+                    document.getElementById("sym4").textContent = "Small blister or puncture marks";
+                    document.getElementById("sym5").textContent = "Occasional spreading redness or firmness";
+                    document.getElementById("sym6").textContent = "Rare: severe cramping or systemic symptoms (species-dependent)";
+
+                    document.getElementById("help1").textContent = "If severe pain, muscle cramps, or abdominal pain develop (possible black widow)";
+                    document.getElementById("help2").textContent = "If a growing ulcer/necrotic center appears (possible brown recluse)";
+                    document.getElementById("help3").textContent = "If fever, chills, or spreading redness occurs (possible infection)";
+                    document.getElementById("help4").textContent = "If the wound drains pus or swelling worsens after 24–48 hours";
+                    document.getElementById("help5").textContent = "If you have difficulty breathing, facial swelling, or other signs of an allergic reaction";
+
                     break;
 
                 case "Fleas":
                     bugInfo = "DISPLAY FLEAS INFO HERE";
                     img.style.display = "none";
+
+                    document.getElementById("dtext").textContent = "Expected Duration: 1 to 2 weeks (may recur without environmental control)";
+                    document.getElementById("stext").textContent = "Severity: Low";
+
+                    document.getElementById("treat1").textContent = "Clean bites with soap and water; avoid scratching";
+                    document.getElementById("treat2").textContent = "Apply calamine lotion or 1% hydrocortisone cream to reduce itching";
+                    document.getElementById("treat3").textContent = "Use oral antihistamines if itching is persistent";
+                    document.getElementById("treat4").textContent = "Use cool compresses to decrease swelling and discomfort";
+                    document.getElementById("treat5").textContent = "Address the source: treat pets and wash bedding to prevent new bites";
+
+                    document.getElementById("sym1").textContent = "Clusters of small, itchy red bumps (often on ankles or legs)";
+                    document.getElementById("sym2").textContent = "Intense itching that can worsen at night";
+                    document.getElementById("sym3").textContent = "Tiny puncture point in the center of each bump";
+                    document.getElementById("sym4").textContent = "Mild swelling or hives around bite areas";
+                    document.getElementById("sym5").textContent = "Scabbing or crusting if scratched repeatedly";
+                    document.getElementById("sym6").textContent = "Possible secondary skin infection from scratching";
+
+                    document.getElementById("help1").textContent = "If bites show increasing redness, warmth, or pus (possible infection)";
+                    document.getElementById("help2").textContent = "If severe itching doesn’t improve with OTC treatments";
+                    document.getElementById("help3").textContent = "If you develop fever, swollen lymph nodes, or feel unwell";
+                    document.getElementById("help4").textContent = "If symptoms persist beyond 2 weeks";
+                    document.getElementById("help5").textContent = "If you have signs of an allergic reaction (trouble breathing, dizziness, facial swelling)";
+                    
                     break;
 
                 case "No":
@@ -119,7 +259,31 @@
                 case "Mosquito":
                     bugInfo = "DISPLAY MOSQUITO INFO HERE";
                     img.style.display = "none";
+
+                    document.getElementById("dtext").textContent = "Expected Duration: 1 to 3 days";
+                    document.getElementById("stext").textContent = "Severity: Low";
+
+                    document.getElementById("treat1").textContent = "Wash the bite area with soap and water to prevent infection";
+                    document.getElementById("treat2").textContent = "Apply an ice pack to reduce swelling and itching";
+                    document.getElementById("treat3").textContent = "Use an over-the-counter anti-itch or hydrocortisone cream";
+                    document.getElementById("treat4").textContent = "Take oral antihistamines to relieve itching and inflammation";
+                    document.getElementById("treat5").textContent = "Avoid scratching the bite to prevent infection and scarring";
+
+                    document.getElementById("sym1").textContent = "Raised, itchy red bump at the site of the bite";
+                    document.getElementById("sym2").textContent = "Localized swelling or mild redness";
+                    document.getElementById("sym3").textContent = "Warmth or tenderness at the bite site";
+                    document.getElementById("sym4").textContent = "Clusters of bites in exposed skin areas";
+                    document.getElementById("sym5").textContent = "Occasional blistering or darkening of the skin (rare)";
+                    document.getElementById("sym6").textContent = "Systemic symptoms like fever or fatigue (if infected or allergic)";
+
+                    document.getElementById("help1").textContent = "If you develop fever, headache, or body aches within a week of being bitten";
+                    document.getElementById("help2").textContent = "If swelling spreads significantly or becomes painful";
+                    document.getElementById("help3").textContent = "If you notice pus, drainage, or streaking (possible infection)";
+                    document.getElementById("help4").textContent = "If you have an allergic reaction (difficulty breathing, swelling of face or throat)";
+                    document.getElementById("help5").textContent = "If you live in or have recently traveled to an area with mosquito-borne diseases";
+                    
                     break;
+
             }
             //document.getElementById("bugInfo").textContent = bugInfo;
         </script>

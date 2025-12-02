@@ -54,6 +54,11 @@
     float: right;
 }
 
+.submit-button:hover {
+    background-color: #006400;
+    cursor: pointer;
+}
+
 .analysis-items {
     margin-top: 10px;
     margin-bottom:10px;

@@ -23,11 +23,22 @@ else:
     device = torch.device("cpu")
 print("Using device:", device)
 
-# Transformation
-transform = transforms.Compose([
-    transforms.Resize((64, 256)),  # Resize to input size
+# Transformations for training and testing data
+# Data augmentation for training data
+train_transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.RandomRotation(degrees=10),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.1, hue=0.05),
+    transforms.RandomResizedCrop(size=224, scale=(0.9, 1.0), ratio=(0.9, 1.1)), #Crops image a bit for zoom variations, also tweaks aspect ratio of images
+    transforms.ToTensor(),
+    transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+])
+
+# No data augmentation for testing data
+test_transform = transforms.Compose([
+    transforms.Resize((224, 224)),  # Resize to input size
     transforms.ToTensor(),         # Convert to tensor
-    transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))  # Normalize the image
+    transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))  # Normalize the image
 ])
 
 # Login using e.g. `huggingface-cli login` to access this dataset
@@ -38,8 +49,8 @@ splits = {'train': 'data/train-00000-of-00001.parquet', 'validation': 'data/vali
 train_df = pd.read_parquet("hf://datasets/eceunal/bug-bite-images-aug_v3/" + splits["train"])
 test_df = pd.read_parquet("hf://datasets/eceunal/bug-bite-images-aug_v3/" + splits["validation"])
 
-train_dataset = CustomDataset(train_df, transform=transform)
-test_dataset = CustomDataset(test_df, transform=transform)
+train_dataset = CustomDataset(train_df, transform=train_transform)
+test_dataset = CustomDataset(test_df, transform=test_transform)
 
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
@@ -47,9 +58,10 @@ test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 class ResNet18(nn.Module):
     def __init__(self, num_classes=8):
         super().__init__()
-        self.model = models.resnet18(weights=None)
+        self.model = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)
         self.model.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
         self.model.maxpool = nn.Identity()
+        self.dropout = nn.Dropout(0.5)
         self.model.fc = nn.Linear(self.model.fc.in_features, num_classes)
 
     def forward(self, x):
@@ -67,7 +79,7 @@ def train(model, loader, criterion, optimizer):
     all_labels = []
     all_preds = []
 
-    for images, labels in loader:
+    for i, (images, labels) in enumerate(loader, 1):
         images, labels = images.to(device), labels.to(device)
 
         outputs = model(images)
@@ -78,6 +90,12 @@ def train(model, loader, criterion, optimizer):
         optimizer.step()
 
         running_loss += loss.item() * images.size(0)
+
+        # Print every 10 batches
+        if i % 10 == 0:
+            print(f"Epoch [{epoch}/{num_epochs}], Batch [{i}/{len(loader)}], Loss: {running_loss/10:.4f}")
+            running_loss = 0.0
+
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
@@ -124,7 +142,7 @@ def evaluate(model, loader, criterion):
     return epoch_loss, epoch_acc, epoch_precision, epoch_recall, epoch_f1
 
 
-num_epochs = 20
+num_epochs = 25
 for epoch in range(1, num_epochs + 1):
     train_loss, train_acc, train_precision, train_recall, train_f1 = train(resnet_model, train_loader, criterion, optimizer)
     test_loss, test_acc, test_precision, test_recall, test_f1 = evaluate(resnet_model, test_loader, criterion)

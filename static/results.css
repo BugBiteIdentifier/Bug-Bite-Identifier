@@ -111,3 +111,9 @@
     margin-left: 0px;
     padding-left: 20px;
 }
+
+img {
+    display: block;
+    margin: auto;
+    width: 75%;
+}

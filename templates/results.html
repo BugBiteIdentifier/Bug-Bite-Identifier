@@ -60,6 +60,9 @@
         <!--this line right here is testing that we can get the result and pass text from it correctly-->
         <p id="bugInfo"></p>
 
+        <!--This image is only displayed for No Bite, to fill the screen-->
+        <img id="sillyBug" src="static/sillybug.png" alt="sillyBug" height="500" width="500">
+
         <!--CODE TO DETERMINE BUG INFO-->
         <script>
             let bugInfo = "";
@@ -67,31 +70,39 @@
             //Use tojson so Flask adds proper quotes and escaping
             //this says it has an error but it appears to work still??
             const bugType = {{ label | tojson }};
+            const img = document.getElementById("sillyBug");
 
             switch (bugType) {
                 case "Ant":
                     //setting bug info like this was just for my testing purposes, the text itself is now commented out under the switch
                     bugInfo = "DISPLAY ANT INFO HERE";
+                    //must specifiy image is not displayed for all other cases
+                    img.style.display = "none";
                     break;
 
                 case "Bedbug":
                     bugInfo = "DISPLAY BEDBUG INFO HERE";
+                    img.style.display = "none";
                     break;
 
                 case "Tick":
                     bugInfo = "DISPLAY TICK INFO HERE";
+                    img.style.display = "none";
                     break;
 
                 case "Berry Bug":
                     bugInfo = "DISPLAY BERRY BUG INFO HERE";
+                    img.style.display = "none";
                     break;
 
                 case "Spider":
                     bugInfo = "DISPLAY SPIDER INFO HERE";
+                    img.style.display = "none";
                     break;
 
                 case "Fleas":
                     bugInfo = "DISPLAY FLEAS INFO HERE";
+                    img.style.display = "none";
                     break;
 
                 case "No":
@@ -102,19 +113,16 @@
                     document.getElementById("dtext").textContent = "";
                     document.getElementById("stext").textContent = "";
                     //maybe display some sort of image here since page looks so empty now
-
+                    img.style.display = "block";
                     break;
 
                 case "Mosquito":
                     bugInfo = "DISPLAY MOSQUITO INFO HERE";
+                    img.style.display = "none";
                     break;
             }
             //document.getElementById("bugInfo").textContent = bugInfo;
         </script>
-
-        <!--This image is only displayed for No Bite, to fill the screen-->
-        <img src="name" alt="sillyBug" height="500" width="500">
-        
     </div>
 </body>
 

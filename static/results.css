@@ -18,6 +18,17 @@
     font-weight: 900;
 }
 
+.background-container{
+    background-image: url("bugBackround.png"), url("bugBackround.png");
+    background-repeat: repeat-y, repeat-y;
+    /*background-position: left center, right center; */
+    background-position: left center, right center;
+    background-size: 300px; /* adjust silhouette size */
+    padding-top: 0px;      /* to make sure we start with full bug */
+    padding-left: 0px;   /* prevent content overlap */
+    padding-right: 0px;
+}
+
 .result-container{
     margin-top: 10px;
     margin-left: 300px;

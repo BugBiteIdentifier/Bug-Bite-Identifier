@@ -19,9 +19,9 @@
 }
 
 .result-container{
-    margin-top: 15px;
-    margin-left: 350px;
-    margin-right: 350px;
+    margin-top: 10px;
+    margin-left: 300px;
+    margin-right: 300px;
     align-items: center;
     justify-content: center;    
     font-family: sans-serif;
@@ -72,7 +72,7 @@
 }
 
 .treatment {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 15px;
     outline: 3px solid #4b6827;
     outline-offset: 0px;
@@ -87,7 +87,7 @@
 }
 
 .symptoms {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 15px;
     outline: 3px solid #4b6827;
     outline-offset: 0px;
@@ -102,7 +102,7 @@
 }
 
 .medical-help {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 15px;
     outline: 3px solid #f03d3d;
     outline-offset: 0px;
